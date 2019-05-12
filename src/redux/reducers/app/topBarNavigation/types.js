@@ -1,0 +1,3 @@
+export default {
+  SET_TOP_BAR_NAVIGATION: 'SET_TOP_BAR_NAVIGATION',
+}
