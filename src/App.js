@@ -1,22 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { Provider } from 'react-redux';
 import {
   BrowserRouter,
-  Switch,
-  Route,
 } from 'react-router-dom';
+import { withStyles } from '@material-ui/core/styles';
 
 import MaterialThemeProvider from 'theme/MaterialThemeProvider';
 import { configureStore } from 'redux/reducers'
 
-import { withStyles } from '@material-ui/core/styles';
-import ContentSection from 'sections/ContentSection';
-import Footer from 'sections/Footer';
+// NOTE: Temporary disable footer
+// import Footer from 'sections/Footer';
 import Header from 'sections/Header';
-
-import routes from 'routes';
+import MainApp from 'sections/Mainapp';
 
 const styles = theme => ({
   '@global': {
@@ -33,13 +29,9 @@ function App() {
     <Provider store={store}>
       <MaterialThemeProvider>
         <BrowserRouter basename="/">
-          <Header/>
-          <ContentSection>
-            <Switch>
-              {routes.map((route, index) => <Route {...route} key={index}/>)}
-            </Switch>
-          </ContentSection>
-          <Footer/>
+          <Header />
+          <MainApp />
+          {/*<Footer /> */}
         </BrowserRouter>
       </MaterialThemeProvider>
     </Provider>

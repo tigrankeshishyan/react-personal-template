@@ -1,5 +1,3 @@
-// TODO: Fix base api
-
 import BaseApi from './BaseApi';
 import { normalizeUrl } from './utils';
 
