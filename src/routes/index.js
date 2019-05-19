@@ -1,4 +1,4 @@
-import SignIn from 'pages/SignIn';
+import Auth from 'pages/Auth';
 import HomePage from 'pages/Home';
 import NotFound from 'pages/NotFound';
 
@@ -11,7 +11,7 @@ const routes = [
   {
     exact: true,
     path: '/login',
-    component: SignIn,
+    component: Auth,
   },
   {
     component: NotFound,

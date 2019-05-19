@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import ContentSection from 'sections/ContentSection';
-import SignIn from 'pages/SignIn';
+import Auth from 'pages/Auth';
 import routes from 'routes';
 
 class MainApp extends React.Component {
@@ -11,7 +11,7 @@ class MainApp extends React.Component {
     } = this.props;
 
     if (!isUserLoggedIn) {
-      return <SignIn />;
+      return <Auth />;
     }
 
     return (

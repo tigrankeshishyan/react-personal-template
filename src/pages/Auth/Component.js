@@ -38,7 +38,7 @@ const tabChild = {
   [tabs.reg]: Registration,
 };
 
-function SignIn({ classes }) {
+function Auth({ classes }) {
 
   const [activeTab, setActiveTab] = useState(tabs.log);
 
@@ -76,8 +76,8 @@ function SignIn({ classes }) {
   );
 }
 
-SignIn.propTypes = {
+Auth.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SignIn);
+export default withStyles(styles)(Auth);
