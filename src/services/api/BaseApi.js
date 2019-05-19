@@ -24,8 +24,6 @@ export default class BaseApi {
         return {
           success: true,
           payload: result.payload || result,
-          // TODO: temporary solution for analytics section.
-          isMocked: typeof result !== 'string' ? result.isMocked : false,
         };
       } else {
         logError('Error while processing request', url);
@@ -35,7 +33,7 @@ export default class BaseApi {
       logError(err, url);
       return {
         success: false,
-        errorMessage: String(err),
+        errorMessage: String(err) || '',
       };
     }
   }
