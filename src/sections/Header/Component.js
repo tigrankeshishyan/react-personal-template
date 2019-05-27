@@ -1,14 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
-import Person from '@material-ui/icons/Person';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import Link from 'components/Link';
+
+import NavigationMenu from './NaviationMenu';
+
+import ANMLogo from 'images/anm-logo.jpg';
 
 const styles = {
   appBar: {
@@ -19,20 +19,11 @@ const styles = {
     marginLeft: 15,
     flex: 1,
   },
-  avatar: {
-    cursor: 'pointer',
-  },
 };
 
 class Header extends React.PureComponent {
   static defaultProps = {
     topBarData: [],
-  };
-
-  avatarRef = null;
-
-  state = {
-    isUserMenuOpen: false,
   };
 
   componentDidMount() {
@@ -43,23 +34,8 @@ class Header extends React.PureComponent {
     setTopBarNavigation();
   }
 
-  toggleMenu = () => {
-    this.setState({
-      isUserMenuOpen: !this.state.isUserMenuOpen,
-    });
-  };
-
-  onLogout = () => {
-    this.props.logoutUser();
-  };
-
-  setAvatarRef = node => {
-    this.avatarRef = node;
-  };
-
   render() {
     const {
-      user,
       classes,
       topBarData,
     } = this.props;
@@ -71,48 +47,19 @@ class Header extends React.PureComponent {
         color="default"
       >
         <Toolbar>
+          <Link to="/">
+            <Avatar src={ANMLogo}/>
+          </Link>
           <Typography
             className={classes.toolbarTitle}
             color="primary"
             variant="h6"
             noWrap
           >
-            <Link to="/">
-              Akpp website
-            </Link>
+            Armenian National Music
           </Typography>
-          {topBarData.map(link => (
-            <Link to={link.path} key={link.title}>
-              <Button>
-                {link.title}
-              </Button>
-            </Link>
-          ))}
 
-          {
-            user.id && (
-              <React.Fragment>
-                <Menu
-                  id="user-menu"
-                  anchorEl={this.avatarRef}
-                  onClose={this.toggleMenu}
-                  open={this.state.isUserMenuOpen}
-                >
-                  <MenuItem onClick={this.onLogout}>
-                    Logout
-                  </MenuItem>
-                </Menu>
-
-                <div
-                  ref={this.setAvatarRef}
-                  className={classes.avatar}
-                >
-                  <Avatar onClick={this.toggleMenu}>
-                    <Person/>
-                  </Avatar>
-                </div>
-              </React.Fragment>
-            )}
+          <NavigationMenu data={topBarData} />
         </Toolbar>
       </AppBar>
     );

@@ -1,5 +1,5 @@
 import types from './types';
-import navigationRoutes from './navigationRoutes.json';
+import navigationRoutes from 'mockdata/navigationRoutes.json';
 
 function setTopBarNavigation() {
   return {
